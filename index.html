@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-	<meta charset="UTF-8">
-	<title>GAME SNAKE</title>
+  <meta charset="UTF-8">
+  <title>GAME SNAKE</title>
 </head>
 <body>
-	
-	<script>
+  
+  <script>
   var words = [
     "аммонит",
     "трилобит",
     "сингулярность",
-    "средневековье"
+    "средневековье",
+    "хокинг",
+    "Алгоритм",
+    "лесопарк"
   ];
   
   var word = words[Math.floor(Math.random() * words.length)];
 
   var answerArray =[];
   for (var i=0; i<word.length;i++){
-  	answerArray[i] ="_";
+    answerArray[i] ="_";
   }
   var remainingLetters = word.length;
 
   while (remainingLetters>0){
-  	alert(answerArray.join (""));
+    alert(answerArray.join (""));
     var guess = prompt ("Угадайте букву, или нажмите Отмена для выхода из игры.");
-    if (guess === null) {
+    var res = guess.toLowerCase();
+    if (res === null) {
       break;
-    } else if (guess.length !== 1) {
+    } else if (res.length !== 1) {
       alert("Пожалуйста, введите одиночную букву.");
     } else {
       for (var j=0;j<word.length; j++){
-        if (word[j] === guess) {
-          answerArray[j] = guess;
+        if (word[j] === res) {
+          answerArray[j] = res;
           remainingLetters--;
         }
       }
@@ -41,6 +45,6 @@
 
   alert(answerArray.join(" "));
   alert ("Отлично!Было загадано слово " + word);
-	</script>
+  </script>
 </body>
 </html>
